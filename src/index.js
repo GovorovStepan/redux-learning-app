@@ -6,8 +6,8 @@ const reducer = (state = 0, action) => {
       return state + 1;
     case 'DEC':
       return state - 1;
-    case 'RND':
-      return state + action.value;
+    case 'RESET':
+      return 0;
     default: 
       return state;
   }
@@ -15,7 +15,7 @@ const reducer = (state = 0, action) => {
 
 const inc = () => ({type: 'INC'});
 const dec = () => ({type: 'DEC'});
-const rnd = (value) => ({type: 'RND', value});
+const reset = () => ({type: 'RESET'});
 
 const store =createStore(reducer);
 
@@ -25,8 +25,8 @@ document.getElementById('inc').addEventListener('click', () => {
 document.getElementById('dec').addEventListener('click', () => {
   store.dispatch(dec());
 });
-document.getElementById('rnd').addEventListener('click', () => {
-  store.dispatch(rnd(Math.floor(Math.random()*10)));
+document.getElementById('reset').addEventListener('click', () => {
+  store.dispatch(reset());
 });
 
 
